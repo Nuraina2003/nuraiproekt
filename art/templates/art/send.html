@@ -1,0 +1,39 @@
+{% extends 'art/base.html' %}
+
+{% block title %}
+Send Email
+{% endblock %}
+
+{% block content %}
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="mt-5 mb-3"> Send Message</h2>
+
+          {% if error_message %}
+          <div class="alert alert-primary" role="alert">
+            {{error_message}}
+          </div>
+          {% endif %}
+
+          {% if email_form %}
+          <form method="POST" action ="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>Email :</p>
+            {{  email_form.email }}<br><br>
+            <p>Content:</p>
+          {{  email_form.subject }}<br><br>
+            {{  email_form.attach }}<br><br>
+               <p>Message :</p>
+          {{  email_form.message }}<br><br>
+
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+          {% endif %}
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
